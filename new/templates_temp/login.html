@@ -1,28 +1,57 @@
-{% extends 'basic.html' %}
-
-{% block body %}
-  <div class="container my-5 w-50">
-    <h2>Log in to My Site</h2>
-    {% if form.errors %}
-    <p style="color: red">Your username and password didn't match. Please try again.</p>
-    {% endif %}
-    <form method="post">
-      {% csrf_token %}
-      <input type="hidden" name="next" value="{{ next }}" />
-      {% for field in form %}
-      <p>
-        {{ field.label_tag }}<br>
-        {{ field }}<br>
-        {% for error in field.errors %}
-      <p style="color: red">{{ error }}</p>
-      {% endfor %}
-      {% if field.help_text %}
-      <p><small style="color: grey">{{ field.help_text }}</small></p>
-      {% endif %}
-      </p>
-      {% endfor %}
-      <button type="submit" class="btn btn-primary">Log in</button>
-      <a href="{% url 'signup' %}">New to My Site? Sign up</a>
-    </form>
+{% extends 'basic.html' %} {% block body %}
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
+        <div
+          class="
+            d-flex
+            align-items-center
+            h-custom-2
+            px-5
+            ms-md-5
+            mt-5
+            pt-5 pt-md-5
+            mt-md-n5
+          "
+        >
+          <form style="width: 23rem" method="post" class="pt-0 pt-md-5">
+            <h1 class="font-weight-bold text-center mt-0 mt-md-5 pt-0 pt-md-5">
+              Đăng nhập
+            </h1>
+            {% if form.errors %}
+            <p class="mb-0" style="color: red">
+              Your username and password didn't match. Please try again.
+            </p>
+            {% endif %}
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{ next }}" />
+            {% for field in form %}
+            <p class="mb-0">
+              {{ field.label_tag }}<br>
+              {{ field }}<br>
+              {% for error in field.errors %}
+            <p class="mb-0" style="color: red">{{ error }}</p>
+            {% endfor %}
+            {% if field.help_text %}
+            <p><small style="color: grey">{{ field.help_text }}</small></p>
+            {% endif %}
+            </p>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Log in</button>
+            <a href="{% url 'signup' %}">New to My Site? Sign up</a>
+          </form>
+        </div>
+      </div>
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <img
+          src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-login-form/img3.jpg"
+          alt="Login image"
+          class="w-100 vh-100"
+          style="object-fit: cover; object-position: left"
+        />
+      </div>
+    </div>
   </div>
+</section>
 {% endblock %}

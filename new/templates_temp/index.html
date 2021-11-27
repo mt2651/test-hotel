@@ -1,84 +1,108 @@
-    {% extends 'basic.html' %}
-    {% block title %} Booking 3T
-    {% endblock title %}
-    {% block body %}
+{% extends 'basic.html' %} {% block title %} Booking 3T {% endblock title %}
+{% block body %}
 
-    <h3 class="text-center text-dark">Rooms Types</h3>
 
-    <!--Room tables starts here-->
-    <div class="container-fluid px-0" style="border:1px solid red">
-
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th class="text-center">Information</th>
-                    <th class="text-center">View</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="text-center">
-                        <!--Room details-->
-                        <h1>Vip1</h1>
-                        <p>Price:1.000.000 VND/day</p>
-
-                        <p>Size :70 m^2</p>
-                        <p>Capacity :Max person 3</p>
-
-                        <p>Services :Wifi,Tv,Bathroom</p>
-                        <p> Views :Sea View</p>
-                    </td>
-                    <td class="text-center">
-                        <!--Room Images-->
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS2ZUkfmCJRRItXDEo0OuJrMkQjAnfwT6sLg&usqp=CAU" alt="" class="img-fluid pt-4">
-                    </td>
-
-                </tr>
-                <tr>
-                    <td class="text-center">
-                        <!--Room details-->
-                        <h1>Vip Bro</h1>
-                        <p>Price: 3.000.000 VND/day</p>
-
-                        <p>Size :100 m^2</p>
-                        <p>Capacity :Max person 5</p>
-
-                        <p>Services :Wifi,Tv,Bathroom</p>
-                        <p> Views :Sea View</p>
-                    </td>
-                    <td class="text-center">
-                        <!--Room Images-->
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS2ZUkfmCJRRItXDEo0OuJrMkQjAnfwT6sLg&usqp=CAU"
-                            alt="" class="img-fluid pt-4">
-                    </td>
-
-                </tr>
-                <tr>
-                    <td class="text-center">
-                        <!--Room details-->
-                        <h1>Super Vip</h1>
-                        <p>Price:10.000.000 VND/day</p>
-
-                        <p>Size :150 m^2</p>
-                        <p>Capacity :Max person 9</p>
-
-                        <p>Services :Wifi,Tv,Bathroom</p>
-                        <p> Views :Sea View</p>
-                    </td>
-                    <td class="text-center">
-                        <!--Room Images-->
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS2ZUkfmCJRRItXDEo0OuJrMkQjAnfwT6sLg&usqp=CAU"
-                            alt="" class="img-fluid pt-4">
-                    </td>
-
-                </tr>
-
-            </tbody>
-        </table>
+<div id="carouselExampleIndicators" class="carousel slide" data-mdb-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" style="height: 400px;">
+      <img src="https://images5.alphacoders.com/374/374077.jpg" class="d-block w-100" alt="..." />
     </div>
-    <!--Roo tables ends here-->
+    <div class="carousel-item" style="height: 400px;">
+      <img src="https://images7.alphacoders.com/991/991923.jpg" class="d-block w-100" alt="..." />
+    </div>
+    <div class="carousel-item" style="height: 400px;">
+      <img src="https://images8.alphacoders.com/747/747533.jpg" class="d-block w-100" alt="..." />
+    </div>
+    <div class="carousel-item" style="height: 400px;">
+      <img src="https://images.alphacoders.com/771/771820.jpg" class="d-block w-100" alt="..." />
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators"
+    data-mdb-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleIndicators"
+    data-mdb-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<div class="" style="transform: translateY(-50%);">
+  <h1 class="p-3 mx-auto  text-center fw-bolder bg-white rounded shadow-sm text-primary bg-white w-75">Đặt khách sạn!!!!
+  </h1>
+</div>
 
-    
-    {% endblock body %}
-   
-   
+<!--Room tables starts here-->
+<div class="container px-0 bg-white shadow">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center">Information</th>
+        <th class="text-center">View</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="text-center">
+          <!--Room details-->
+          <h1>Vip1</h1>
+          <p>Price:1.000.000 VND/day</p>
+
+          <p>Size :70 m^2</p>
+          <p>Capacity :Max person 3</p>
+
+          <p>Services :Wifi,Tv,Bathroom</p>
+          <p>Views :Sea View</p>
+        </td>
+        <td class="text-center">
+          <!--Room Images-->
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS2ZUkfmCJRRItXDEo0OuJrMkQjAnfwT6sLg&usqp=CAU"
+            alt="" class="img-fluid pt-4" />
+        </td>
+      </tr>
+      <tr>
+        <td class="text-center">
+          <!--Room details-->
+          <h1>Vip Bro</h1>
+          <p>Price: 3.000.000 VND/day</p>
+
+          <p>Size :100 m^2</p>
+          <p>Capacity :Max person 5</p>
+
+          <p>Services :Wifi,Tv,Bathroom</p>
+          <p>Views :Sea View</p>
+        </td>
+        <td class="text-center">
+          <!--Room Images-->
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS2ZUkfmCJRRItXDEo0OuJrMkQjAnfwT6sLg&usqp=CAU"
+            alt="" class="img-fluid pt-4" />
+        </td>
+      </tr>
+      <tr>
+        <td class="text-center">
+          <!--Room details-->
+          <h1>Super Vip</h1>
+          <p>Price:10.000.000 VND/day</p>
+
+          <p>Size :150 m^2</p>
+          <p>Capacity :Max person 9</p>
+
+          <p>Services :Wifi,Tv,Bathroom</p>
+          <p>Views :Sea View</p>
+        </td>
+        <td class="text-center">
+          <!--Room Images-->
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS2ZUkfmCJRRItXDEo0OuJrMkQjAnfwT6sLg&usqp=CAU"
+            alt="" class="img-fluid pt-4" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--Roo tables ends here-->
+
+{% endblock body %}

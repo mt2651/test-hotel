@@ -35,6 +35,9 @@ urlpatterns = [
     path('user/bookings', views.user_bookings,name="dashboard"),
     path('user/book-room', views.book_room_page,name="bookroompage"),
     path('user/book-room/book', views.book_room,name="bookroom"),
+    path('user/view-room', views.view_room_user),
+    path('user/vote-room', views.vote_room, name="voteroom"),
+    path('user/vote-room/vote', views.user_vote, name="vote"),
     # path('client/signup', views.user_sign_up,name="usersignup"),
 
     # path('owner/', views.staff_log_sign_page,name="staffloginpage"),
@@ -48,7 +51,7 @@ urlpatterns = [
     path('staff/panel/edit-room', views.edit_room),
     path('staff/panel/add-new-room', views.add_new_room,name="addroom"),
     path('staff/panel/edit-room/edit', views.edit_room),
-    path('staff/panel/view-room', views.view_room),
+    path('staff/panel/view-room', views.view_room_staff),
 
     # path('admin/', admin.site.urls),
     

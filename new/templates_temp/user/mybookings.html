@@ -10,6 +10,7 @@
         <th>Check in</th>
         <th>Check out</th>
         <th>Price</th>
+        <th>Actions</th>
     </thead>
     {% for each_booking in bookings %}
     <tr>
@@ -20,6 +21,13 @@
         <td>{{each_booking.check_in}}</td>
         <td>{{each_booking.check_out}}</td>
         <td>{{each_booking.room.price}}</td>
+
+        {% if each_booking.is_rate == 0 %}
+            <td><a href="/user/vote-room?book_id={{each_booking.id}}"><Button class="btn btn-primary">Vote</Button></a></td>
+
+        {% else %}
+            <td><a href=""><Button class="btn btn-primary">Voted</Button></a></td>
+        {% endif %}
     </tr>
     {% endfor %}
 

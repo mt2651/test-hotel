@@ -1,6 +1,6 @@
 from django.shortcuts import render ,redirect
 from django.http import HttpResponse , HttpResponseRedirect
-from .models import Hotels,Rooms,Reservation
+from .models import Comments, Hotels,Rooms,Reservation
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
@@ -186,12 +186,24 @@ def add_new_room(request):
     
     return redirect('staffpanel')
 
-def view_room(request):
+def view_room_staff(request):
     room_id = request.GET['roomid']
     room = Rooms.objects.all().get(id=room_id)
 
     reservation = Reservation.objects.all().filter(room=room)
     return HttpResponse(render(request,'staff/viewroom.html',{'room':room,'reservations':reservation}))
+
+
+def view_room_user(request):
+    room_id = request.GET['roomid']
+    room = Rooms.objects.all().get(id=room_id)
+
+    reservation = Reservation.objects.all().filter(room=room)
+
+    comment = Comments.objects.filter(book__room=room)
+
+    return HttpResponse(render(request,'user/viewroom.html',{'room':room,'reservations':reservation, 'comments':comment}))
+
 
 def add_new_location(request):
     if request.method == "POST" and request.user.account_role == "owner":  
@@ -233,7 +245,7 @@ def book_room(request):
         
         room = Rooms.objects.all().get(id=room_id)
         #for finding the reserved rooms on this time period for excluding from the query set
-        for each_reservation in Reservation.objects.all().filter(room = room):
+        for each_reservation in Reservation.objects.filter(room = room):
             if str(each_reservation.check_in) < str(request.POST['check_in']) and str(each_reservation.check_out) < str(request.POST['check_out']):
                 pass
             elif str(each_reservation.check_in) > str(request.POST['check_in']) and str(each_reservation.check_out) > str(request.POST['check_out']):
@@ -257,7 +269,7 @@ def book_room(request):
         person = total_person
         reservation.check_in = request.POST['check_in']
         reservation.check_out = request.POST['check_out']
-
+        reservation.booking_id = booking_id
         reservation.save()
 
         messages.success(request,"Congratulations! Booking Successfull")
@@ -276,4 +288,76 @@ def user_bookings(request):
         messages.warning(request,"No Bookings Found")
     return HttpResponse(render(request,'user/mybookings.html',{'bookings':bookings}))
 
+def vote_room(request):
+    booking = Reservation.objects.all().get(id=int(request.GET['book_id']))
+    return HttpResponse(render(request,'user/vote.html',{'booking':booking}))
+
+def user_vote(request):
+    if request.method =="POST":
+
+        book_id = request.POST['book_id']
+
+        reser = Reservation.objects.get(id=book_id)
+        reser.is_rate = 1
+        reser.save()
+        
+        # room = Rooms.objects.all().get(id=room_id)
+        # #for finding the reserved rooms on this time period for excluding from the query set
+        # for each_reservation in Reservation.objects.filter(room = room):
+        #     if str(each_reservation.check_in) < str(request.POST['check_in']) and str(each_reservation.check_out) < str(request.POST['check_out']):
+        #         pass
+        #     elif str(each_reservation.check_in) > str(request.POST['check_in']) and str(each_reservation.check_out) > str(request.POST['check_out']):
+        #         pass
+        #     else:
+        #         messages.warning(request,"Sorry This Room is unavailable for Booking")
+        #         return redirect("homepage")
+            
+        current_user = request.user
+        # total_person = int( request.POST['person'])
+        # booking_id = str(room_id) + str(datetime.datetime.now())
+
+        # reservation = Reservation()
+        # room_object = Rooms.objects.get(id=room_id)
+        # room_object.status = '2'
+        
+        user_object = CustomUser.objects.get(username=current_user)
+
+        cmt = Comments()
+        cmt.name = user_object
+        cmt.body = request.POST['cmt']
+        cmt.book = reser
+        cmt.star = int(request.POST['star'])
+        cmt.save()
+
+        # print(request.POST)
+
+
+
+        # reservation.guest = user_object
+        # reservation.room = room_object
+        # person = total_person
+        # reservation.check_in = request.POST['check_in']
+        # reservation.check_out = request.POST['check_out']
+        # reservation.booking_id = booking_id
+        # reservation.save()
+
+        messages.success(request,"Congratulations! Vote Successfull")
+
+        return redirect("dashboard")
+    else:
+        return HttpResponse('Access Denied')
+    # room = Rooms.objects.all().get(id=int(request.GET['book_id']))
+
+    # return HttpResponse(render(request, 'user/vote.html', {'room':room}))
+
+
+# def user_votings(request):
+#     if request.user.is_authenticated == False:
+#         return redirect('homepage')
+#     user = CustomUser.objects.get(id=request.user.id)
+#     # print(f"request user id ={request.user.id}")
+#     bookings = Reservation.objects.filter(guest=user)
+#     if not bookings:
+#         messages.warning(request,"No Bookings Found")
+#     return HttpResponse(render(request,'user/mybookings.html',{'bookings':bookings}))
     
