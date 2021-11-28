@@ -1,34 +1,73 @@
- {% extends 'basic.html' %} {% block title %}View Room {% endblock title %} {% block body %}
-<h3 class="text-success"> Details</h3>
-<hr>
-<div class="container mx-0 ">
-    <p><b>Number :-</b> {{room.roomnumber}}</p>
-    <p><b>Type :-</b> {{room.get_room_type_display}}</p>
-    <p><b>Capacity :-</b> {{room.capacity}} person</p>
-    <p><b>Size :-</b> {{room.size}} ft</p>
-    <p><b>Status :-</b> {{room.get_status_display| capfirst}} </p>
-    <p><b>City :-</b> {{room.hotel.location| capfirst}} </p>
-    <p><b>State :-</b> {{room.hotel.state| capfirst}} </p>
-    <p><b>India :-</b> {{room.hotel.country| capfirst}} </p>
+{% extends 'basic.html' %} {% block title %}View Room {% endblock title %} {% block body %}
+<div class="mt-5 pt-3">
+    <div class="container bg-white rounded shadow-sm mb-3 p-3">
+        <h3 class="text-success text-center fw-bold mt-3"> Details</h3>
+        <hr class="mb-3 border-2 border" />
+        <div class="row">
+            <div class="col-5 col-md-4">
+                <div class="row">
+                    <div class="col-5 col-md-3"><b>Number: </b></div>
+                    <div class="col-7 col-md-9">{{room.roomnumber}}</div>
+                    <div class="col-5 col-md-3"><b>Type: </b></div>
+                    <div class="col-7 col-md-9">{{room.get_room_type_display}}</div>
+                    <div class="col-5 col-md-3"><b>Capacity: </b></div>
+                    <div class="col-7 col-md-9">{{room.capacity}} person</div>
+                    <div class="col-5 col-md-3"><b>Size: </b></div>
+                    <div class="col-7 col-md-9">{{room.size}} ft</div>
+                    <div class="col-5 col-md-3"><b>Status: </b></div>
+                    <div class="col-7 col-md-9">{{room.get_status_display| capfirst}}</div>
+                    <div class="col-5 col-md-3"><b>City: </b></div>
+                    <div class="col-7 col-md-9">{{room.hotel.location| capfirst}}</div>
+                    <div class="col-5 col-md-3"><b>State: </b></div>
+                    <div class="col-7 col-md-9">{{room.hotel.state| capfirst}}</div>
+                    <div class="col-5 col-md-3"><b>India: </b></div>
+                    <div class="col-7 col-md-9 ">{{room.hotel.country| capfirst}}</div>
+
+                    <div class="col-7 col-md-9 mt-3">
+                        <a href="/user/book-room?roomid={{room.id}}"><button
+                                class="btn btn-warning text-center py-3 w-100">Book
+                                Now</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7 col-md-4">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://cdn6.agoda.net/images/accommodation/best-destinations/apartment-osaka.jpg"
+                                class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://cdn6.agoda.net/images/accommodation/best-destinations/apartment-tokyo.jpg"
+                                class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://cdn6.agoda.net/images/accommodation/best-destinations/apartment-kuala-lumpur.jpg"
+                                class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 mt-3 mt-md-0">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15659.178069527252!2d106.2875213!3d11.128675999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310b3b1bba9cc9fb%3A0xdef1ad0979acfd50!2zVGnhu4dtIMSQ4buTIGPDonUgTGluaCBVeQ!5e0!3m2!1svi!2s!4v1638075848327!5m2!1svi!2s"
+                    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
 </div>
 
-<hr>
 
-<h3 class="text-success">Comment :-</h3>
-{% for each_comment in comments %}
-<tr>
-    <td>{{each_comment.name}}</td>
-    <td>{{each_comment.body}}</td>
-    <td>{{each_comment.created_on}}</td>
-</tr>
-{% endfor %}
-    
-<hr>
-
-<h3 class="text-success">Rate : </h3>
-<hr>
-
-<a href="/user/book-room?roomid={{room.id}}"><button class="btn btn-warning text-center">Book Now</button></a>
 
 
 <!-- <hr> {% if reservations %}

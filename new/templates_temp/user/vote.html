@@ -1,66 +1,84 @@
 {% extends 'basic.html' %} {% block title %} {% endblock title %} {% block body %}
-<div class="container">
-
+<div class="mt-5 pt-5"
+  style="background: url(https://img.thuthuatphanmem.vn/uploads/2018/10/26/anh-dep-dao-vinh-viet-nam_055419149.jpg); background-size: cover; min-height: 95vh;">
+  <div class="container bg-white rounded shadow p-5">
+    <h3 class="fw-bold text-warning text-center mb-0">Vote</h3>
     <div class="row">
-        <div class="col-md-6 col-lg-6 col-xlg-6 col-sm-12 mx-auto my-4 ">
+      <div class="col-md-6 col-lg-6 col-xlg-6 col-sm-12 mx-auto">
+        <form action="/user/vote-room/vote" method="POST">
+          {%csrf_token%}
+          {%load app_tags%}
 
-            <form action="/user/vote-room/vote" method="POST">
-                {%csrf_token%}
-                {%load app_tags%}
-
-                <div class="form-group hidden">
-                    <label for="person">username:</label>
-                    <input type="text" class="form-control " id="username" name="username" disabled value={{request.user}}>
-                </div>
-                <!-- <div class="form-group">
+          <div class="form-group hidden">
+            <label for="person">Username:</label>
+            <input type="text" class="form-control mt-1" id="username" name="username" disabled value={{request.user}}>
+          </div>
+          <!-- <div class="form-group">
                     <label for="person">Vote:</label>
                     <input type="number" class="form-control " id="person" name="vote" min="1" max="5" required="true">
                 </div> -->
-                
-                <div class="form-group">
-                    <label for="username">Star:</label>
-                        <div class="form-check">
-                        <input class="form-check-input" type="radio" name="star" id="star" value="1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          1
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="star" id="star" value="2">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                          2
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="star" id="star" value="3">
-                        <label class="form-check-label" for="flexRadioDefault3">
-                          3
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="star" id="star" value="4">
-                        <label class="form-check-label" for="flexRadioDefault4">
-                          4
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="star" id="star" value="5" checked>
-                        <label class="form-check-label" for="flexRadioDefault5">
-                          5
-                        </label>
-                      </div>
+
+          <div class="container-fluid px-0  mt-3">
+            <div class="row form-group">
+              <div class="col-5 col-md-2">
+                <p>Rate</p>
+              </div>
+              <div class="col-7 col-md-10">
+                <div class="star-wrapper">
+                  <a href="#" class="fas fa-star s1"></a>
+                  <a href="#" class="fas fa-star s2"></a>
+                  <a href="#" class="fas fa-star s3"></a>
+                  <a href="#" class="fas fa-star s4"></a>
+                  <a href="#" class="fas fa-star s5"></a>
                 </div>
-
-                <div class="form-group">
-                    <label for="username">Comment:</label>
-                    <input type="text" class="form-control " id="cmt" name="cmt">
-                </div>
-
-                <button type="submit" class="btn btn-primary">Book Now</button>
-                <input type="hidden" name="book_id" value={{booking.id}}>
-
-            </form>
-        </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group mt-2">
+            <label for="username">Comment:</label>
+            <input type="text" class="form-control " id="cmt" name="cmt">
+          </div>
+          <div class="text-center">
+            <button type="submit" class=" btn mt-3 btn-warning">Book Now</button>
+            <input type="hidden" name="book_id" value={{booking.id}}>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
+  <div class="container mt-3 bg-white shadow rounded p-3">
+    <h3 class=" text-warning">Comment :-</h3>
+    <div class="container pb-5" style="min-height: 30vh;">
+      <div class="row">
+        <div class="col-12 mb-3">
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2"
+              style="height: 100px"></textarea>
+            <label for="floatingTextarea2">Comments</label>
+          </div>
+          <button class="btn btn-outline-primary float-end mt-1">Thêm comment</button>
+        </div>
+        {% comment %} commet {% endcomment %}
+        <div class="col-12 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Nguyễn Khải Đăng</h5>
+              <h6 class="card-subtitle mb-2 text-muted">16h 30/11/2021</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                the card's content.</p>
+            </div>
+          </div>
+        </div>
+        {% comment %} commet {% endcomment %}
+      </div>
+      {% for each_comment in comments %}
+      <tr>
+        <td>{{each_comment.name}}</td>
+        <td>{{each_comment.body}}</td>
+        <td>{{each_comment.created_on}}</td>
+      </tr>
+      {% endfor %}
+    </div>
+  </div>
 </div>
 {% endblock body %}
