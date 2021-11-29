@@ -6,7 +6,7 @@
         background: none;
         position: relative;
     }
-    
+
     .progress::after {
         content: "";
         width: 100%;
@@ -17,7 +17,7 @@
         top: 0;
         left: 0;
     }
-    
+
     .progress>span {
         width: 50%;
         height: 100%;
@@ -26,11 +26,11 @@
         top: 0;
         z-index: 1;
     }
-    
+
     .progress .progress-left {
         left: 0;
     }
-    
+
     .progress .progress-bar {
         width: 100%;
         height: 100%;
@@ -40,7 +40,7 @@
         position: absolute;
         top: 0;
     }
-    
+
     .progress .progress-left .progress-bar {
         left: 100%;
         border-top-right-radius: 80px;
@@ -49,11 +49,11 @@
         -webkit-transform-origin: center left;
         transform-origin: center left;
     }
-    
+
     .progress .progress-right {
         right: 0;
     }
-    
+
     .progress .progress-right .progress-bar {
         left: -100%;
         border-top-left-radius: 80px;
@@ -62,12 +62,13 @@
         -webkit-transform-origin: center right;
         transform-origin: center right;
     }
-    
+
     .progress .progress-value {
         position: absolute;
         top: 0;
         left: 0;
     }
+
     /*
 *
 * ==========================================
@@ -75,19 +76,19 @@
 * ==========================================
 *
 */
-    
+
     body {
         min-height: 100vh;
     }
-    
+
     .rounded-lg {
         border-radius: 1rem;
     }
-    
+
     .text-gray {
         color: #aaa;
     }
-    
+
     div.h4 {
         line-height: 1rem;
     }
@@ -100,30 +101,25 @@
 
 <section class="my-5 ">
     {%load app_tags%}
-    <h2 class="text-center text-primary">Room Stats</h2>
-    <div class="container-fluid px-5 py-5 border">
+    <h2 class="text-center text-primary mb-3 fw-bold">Room Stats</h2>
+    <div class="container px-5">
         <div class="row">
-
-
-
             <div class="col-xl-3 col-lg-6 col-sm-12 mb-4 ">
                 <div class="bg-white rounded-lg p-5 shadow">
                     <h2 class="h6 font-weight-bold text-center mb-4">Total Rooms</h2>
-
-              
-
                     <div class="progress mx-auto" data-value={{ total_rooms|percentage:total_rooms2}}>
                         <span class="progress-left">
-                                    <span class="progress-bar border-primary"></span>
+                            <span class="progress-bar border-primary"></span>
                         </span>
                         <span class="progress-right">
-                                    <span class="progress-bar border-primary"></span>
+                            <span class="progress-bar border-primary"></span>
                         </span>
-                        <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                        <div
+                            class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
                             <div class="h2 font-weight-bold">{{ total_rooms}}</div>
                         </div>
                     </div>
-        
+
 
 
                 </div>
@@ -133,19 +129,20 @@
                 <div class="bg-white rounded-lg p-5 shadow">
                     <h2 class="h6 font-weight-bold text-center mb-4">Available Rooms</h2>
 
-                 
+
                     <div class="progress mx-auto" data-value={{ available|percentage:total_rooms2}}>
                         <span class="progress-left">
-                                    <span class="progress-bar border-success"></span>
+                            <span class="progress-bar border-success"></span>
                         </span>
                         <span class="progress-right">
-                                    <span class="progress-bar border-success"></span>
+                            <span class="progress-bar border-success"></span>
                         </span>
-                        <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                        <div
+                            class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
                             <div class="h2 font-weight-bold">{{ available}}</div>
                         </div>
                     </div>
-    
+
 
 
                 </div>
@@ -155,19 +152,20 @@
                 <div class="bg-white rounded-lg p-5 shadow">
                     <h2 class="h6 font-weight-bold text-center mb-4">Not Available</h2>
 
-                  
+
                     <div class="progress mx-auto" data-value={{ unavailable|percentage:total_rooms2}}>
                         <span class="progress-left">
-                                    <span class="progress-bar border-danger"></span>
+                            <span class="progress-bar border-danger"></span>
                         </span>
                         <span class="progress-right">
-                                    <span class="progress-bar border-danger"></span>
+                            <span class="progress-bar border-danger"></span>
                         </span>
-                        <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                        <div
+                            class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
                             <div class="h2 font-weight-bold">{{ unavailable}}</div>
                         </div>
                     </div>
-            
+
 
 
                 </div>
@@ -177,21 +175,18 @@
                 <div class="bg-white rounded-lg p-5 shadow">
                     <h2 class="h6 font-weight-bold text-center mb-4">Total Reservation</h2>
 
-                 
                     <div class="progress mx-auto" data-value={{reserved |percentage:total_rooms2}}>
                         <span class="progress-left">
-                                    <span class="progress-bar border-warning"></span>
+                            <span class="progress-bar border-warning"></span>
                         </span>
                         <span class="progress-right">
-                                    <span class="progress-bar border-warning"></span>
+                            <span class="progress-bar border-warning"></span>
                         </span>
-                        <div class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
+                        <div
+                            class="progress-value w-100 h-100 rounded-circle d-flex align-items-center justify-content-center">
                             <div class="h2 font-weight-bold">{{reserved}}</div>
                         </div>
                     </div>
-   
-
-
                 </div>
             </div>
         </div>
@@ -199,53 +194,61 @@
 </section>
 
 <!--Room Stats section ends here-->
+<div class="container mb-5 bg-white rounded shadow">
+    <div class="container rounded bg-warning shadow-sm mt-5">
+        <h2 class="text-center pb-2 fw-bold text-white mt-5">Rooms Details</h2>
+        <div class="float-end">
+            <button class="btn btn-group btn-primary  " data-bs-toggle="modal" data-bs-target="#newroomModal">Add
+                New Room</button>
+        </div>
+        <div class="float-end px-3">
+            <button class="btn btn-group btn-outline-primary ms-auto " data-bs-toggle="modal"
+                data-bs-target="#newlocationModal">Add
+                New Hotel</button>
+        </div>
+    </div>
 
 
-<h2 class="text-center pb-2">Rooms Details</h2>
 
-<Button class="btn-group btn-primary" data-toggle="modal" data-target="#newroom">Add New Room</Button>
+    <table class="table table-striped  " id="table_id">
+        <thead>
+            <th>Room Number</th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Price</th>
+            <th>Capacity</th>
+            <th>Size</th>
+            <th colspan="2">Actions</th>
 
-
-<Button class="btn-group btn-primary " data-toggle="modal" data-target="#newlocation">Add New Hotel</Button>
-
-
-<table class="table table-striped  ">
-    <thead>
-        <th>Room Number</th>
-        <th>Type</th>
-        <th>Status</th>
-        <th>Price</th>
-        <th>Capacity</th>
-        <th>Size</th>
-        <th colspan="2">Actions</th>
-
-    </thead>
-    {% if rooms %} {% for each_room in rooms %}
-    <tr>
-        <td>{{each_room.roomnumber}}</td>
-        <td>{{each_room.get_room_type_display}}</td>
-        <td>{{each_room.get_status_display}}</td>
-        <td>{{each_room.price}}</td>
-        <td>{{each_room.capacity}}</td>
-        <td>{{each_room.size}}</td>
-        <td colspan="2">
-            <a href="/staff/panel/edit-room?roomid={{each_room.id}}"><Button class="btn btn-danger">Edit</Button></a>
-            <a href="/staff/panel/view-room?roomid={{each_room.id}}"><Button class="btn btn-primary">View</Button></a>
-        </td>
+        </thead>
+        {% if rooms %} {% for each_room in rooms %}
+        <tr>
+            <td>{{each_room.roomnumber}}</td>
+            <td>{{each_room.get_room_type_display}}</td>
+            <td>{{each_room.get_status_display}}</td>
+            <td>{{each_room.price}}</td>
+            <td>{{each_room.capacity}}</td>
+            <td>{{each_room.size}}</td>
+            <td colspan="2">
+                <a href="/staff/panel/edit-room?roomid={{each_room.id}}"><Button
+                        class="btn btn-danger">Edit</Button></a>
+                <a href="/staff/panel/view-room?roomid={{each_room.id}}"><Button
+                        class="btn btn-primary">View</Button></a>
+            </td>
 
 
-    </tr>
-    {% endfor %} {% endif %}
+        </tr>
+        {% endfor %} {% endif %}
 
 
-</table>
-<!---->
-
+    </table>
+    <!---->
+</div>
 
 <!--Modal for Add New Location starts from here-->
 
 <!-- The Modal -->
-<div class="modal" id="newlocation">
+<div class="modal " id="newlocationModal" tabindex="-1" aria-labelledby="newlocationModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -282,9 +285,10 @@
                                     <label for="country">Country:</label>
                                     <input type="text" class="form-control " id="new_country" name="new_country">
                                 </div>
-
-
-                                <button type="submit" class="btn btn-primary">Add Location</button>
+                                <div class=" w-100 text-center mt-3">
+                                    <button type="submit" class="btn btn-success">Add
+                                        Location</button>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -301,10 +305,9 @@
 <!--Modal for Add New Room starts from here-->
 
 <!-- The Modal -->
-<div class="modal" id="newroom">
+<div class="modal mt-5 pt-5" id="newroomModal" tabindex="-1" aria-labelledby="newroomModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-
             <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Add New Room</h4>
@@ -324,7 +327,7 @@
                                 <div class="form-group">
                                     <label for="email">Room Type:</label>
                                     <select class="form-control" name="roomtype" id="roomtype">
-                                        
+
                                         <option value="1">Premium</option>
                                         <option value="2">Deluxe</option>
                                         <option value="3">Basic</option>
@@ -345,10 +348,10 @@
                                 <div class="form-group">
                                     <label for="pwd">Status:</label>
                                     <select class="form-control" name="status" id="roomstatus">
-                                        
+
                                         <option value="1">Available</option>
                                         <option value="2">Not Available</option>
-                                        
+
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -358,11 +361,14 @@
                                         {% for each_location,eachid in location%}
                                         <option value={{eachid}}>{{each_location}}</option>
                                         {% endfor %}
-                                        
-                                        
+
+
                                     </select>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Add Room</button>
+                                <div class=" w-100 text-center mt-3">
+                                    <button type="submit" class="btn btn-success">Add Room</button>
+                                </div>
+
                             </form>
                         </div>
                     </div>
@@ -381,9 +387,9 @@
 <!-- jquery for rooms stats  starts here-->
 
 <script>
-    $(function() {
+    $(function () {
 
-        $(".progress").each(function() {
+        $(".progress").each(function () {
 
             var value = $(this).attr('data-value');
             var left = $(this).find('.progress-left .progress-bar');
@@ -406,6 +412,14 @@
 
         }
 
+    });
+    $(document).ready(function () {
+        $('#table_id').DataTable({
+            searching: true,
+            paging: true,
+            scrollY: 400,
+            select: true
+        });
     });
 </script>
 <!--Jquery for room stats ends here-->

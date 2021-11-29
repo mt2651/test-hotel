@@ -2,19 +2,31 @@
 {% block title %}Hotel Krishna
 {% endblock title %}
 {% block body %}
+<style>
+    .carousel-inner .carousel-item {
+        height: 500px;
+    }
+
+    @media (max-width: 768px) {
+        .carousel-inner .carousel-item {
+            width: 100%;
+
+        }
+    }
+</style>
 
 <div id="carouselExampleIndicators" class="carousel slide" data-mdb-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active" style="height: 400px;">
+        <div class="carousel-item active">
             <img src="https://images5.alphacoders.com/374/374077.jpg" class="d-block w-100" alt="..." />
         </div>
-        <div class="carousel-item" style="height: 400px;">
+        <div class="carousel-item">
             <img src="https://images7.alphacoders.com/991/991923.jpg" class="d-block w-100" alt="..." />
         </div>
-        <div class="carousel-item" style="height: 400px;">
+        <div class="carousel-item">
             <img src="https://images8.alphacoders.com/747/747533.jpg" class="d-block w-100" alt="..." />
         </div>
-        <div class="carousel-item" style="height: 400px;">
+        <div class="carousel-item">
             <img src="https://images.alphacoders.com/771/771820.jpg" class="d-block w-100" alt="..." />
         </div>
     </div>
@@ -108,7 +120,7 @@
 
             <td><a href="/user/book-room?roomid={{r.id}}"><button class="btn btn-warning">Book Now</button></a></td>
             <td><a href="/user/view-room?roomid={{r.id}}"><Button class="btn btn-primary">View</Button></a></td>
-             
+
         </tr>
         {% endfor %}
 

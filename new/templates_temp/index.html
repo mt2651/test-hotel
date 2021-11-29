@@ -1,19 +1,29 @@
 {% extends 'basic.html' %} {% block title %} Booking 3T {% endblock title %}
 {% block body %}
+<style>
+  .carousel-inner .carousel-item {
+    height: 500px;
+  }
 
-
+  @media (max-width: 768px) {
+    .carousel-inner .carousel-item {
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>
 <div id="carouselExampleIndicators" class="carousel slide" data-mdb-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active" style="height: 400px;">
+    <div class="carousel-item active">
       <img src="https://images5.alphacoders.com/374/374077.jpg" class="d-block w-100" alt="..." />
     </div>
-    <div class="carousel-item" style="height: 400px;">
+    <div class="carousel-item">
       <img src="https://images7.alphacoders.com/991/991923.jpg" class="d-block w-100" alt="..." />
     </div>
-    <div class="carousel-item" style="height: 400px;">
+    <div class="carousel-item">
       <img src="https://images8.alphacoders.com/747/747533.jpg" class="d-block w-100" alt="..." />
     </div>
-    <div class="carousel-item" style="height: 400px;">
+    <div class="carousel-item">
       <img src="https://images.alphacoders.com/771/771820.jpg" class="d-block w-100" alt="..." />
     </div>
   </div>
@@ -28,11 +38,194 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-<div class="" style="transform: translateY(-50%);">
-  <h1 class="p-3 mx-auto  text-center fw-bolder bg-white rounded shadow-sm text-primary bg-white w-75">Đặt khách sạn!!!!
+<div class="bg-white rounded shadow-sm text-primary bg-white w-75  mx-auto  text-center"
+  style="transform: translateY(-50%);">
+  <h1 class="pt-3 px-3 mb-0 fw-bolder ">Đặt khách sạn!!!!
   </h1>
+  <button class="btn btn-primary mb-3">Đặt ngay</button>
 </div>
+<div class="container">
+  <div class="" id="slider1">
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0" src="https://cdn6.agoda.net/images/WebCampaign/wcPD20210923/vi-vn.png"
+        alt="">
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0"
+        src="https://cdn6.agoda.net/images/WebCampaign/wcSP20211104TH/home_banner/vi-vn.png" alt="">
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0"
+        src="https://cdn6.agoda.net/images/WebCampaign/wcSP20211001NAM/home_banner/vi-vn.png" alt="">
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0"
+        src="https://cdn6.agoda.net/images/WebCampaign/wcSP20210824EUv2/vi-vn.png" alt="">
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('#slider1').slick({
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 2,
+      adaptiveHeight: true
+    });
+  });
+</script>
 
+<div class="w-100 py-3 bg-primary text-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-4 text-center text-md-start" style="margin: auto 0;"><strong>Thêm không gian cho gia
+          đình và bạn bè
+        </strong>
+        <p> Rất nhiều lựa chọn hấp dẫn các căn hộ và biệt thự trên Logo</p>
+      </div>
+      <div class="col-12 col-md-8">
+        <div class="row">
+          <div class="col-6">
+            <div class="card">
+              <div class="card">
+                <img
+                  src="https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10022952-1080x608-FIT_AND_TRIM-92d6e95ad35918cfe811217045964060.jpeg"
+                  class="card-img-top w-100" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title text-black">Acqua Villa Nha Trang</h5>
+                  <p class="card-text text-black">Lô 25 ô R, Khu biệt thự Biển và Du Lịch Anh Nguyễn, Phường Vĩnh
+                    Nguyên, Vĩnh
+                    Trường, Nha Trang, Khánh Hòa, Việt Nam</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="card">
+              <div class="card">
+                <img
+                  src="https://ik.imagekit.io/tvlk/apr-asset/dgXfoyh24ryQLRcGq00cIdKHRmotrWLNlvG-TxlcLxGkiDwaUSggleJNPRgIHCX6/hotel/asset/10032702-1024x682-FIT_AND_TRIM-bba3473e3fd7b23df68422f69026b166.jpeg"
+                  class="card-img-top w-100" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title text-black">Azumi Villa Hội An</h5>
+                  <p class="card-text text-black">104 Lý Thường Kiệt, Sơn Phong, Phường Cẩm Châu, Hội An, Tỉnh Quảng
+                    Nam, Việt Nam, 560000</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="my-3">
+  <h2 class="text-center">Các điểm đến thu hút nhất Việt Nam</h2>
+  <div class=" text-center container" id="slider2">
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/13170/1_13170_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Hồ Chí Minh</strong>
+      <p>9.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/2758/1_2758_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Hà Nội</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/15932/1_15932_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Đà Lạt</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/17190/1_17190_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Vũng Tàu</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/16440/1_16440_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Đà Nẵng</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/2679/1_2679_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Nha Trang</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/17188/1_17188_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Đảo Phú Quốc</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/17188/1_17188_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Sapa</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/17160/1_17160_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Hạ Long</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/17182/1_17182_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Quy Nhơn</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/17242/1_17242_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Cần Thơ</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+    <div class=" p-4">
+      <img class="w-100 rounded shadow border-0 rounded-circle"
+        src="https://pix6.agoda.net/geo/city/16079/1_16079_02.jpg?s=345x345&ar=1x1" alt="">
+      <strong>Vinh</strong>
+      <p>6.589 chổ ở</p>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('#slider2').slick({
+      centerMode: true,
+      centerPadding: '60px',
+      slidesToShow: 10,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]
+    });
+  });
+</script>
 <!--Room tables starts here-->
 <div class="container px-0 bg-white shadow">
   <table class="table table-striped">

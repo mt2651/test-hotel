@@ -3,104 +3,105 @@
 {% endblock title %}
 {% block css %}
 <style>
-        .progress {
-            width: 150px;
-            height: 150px;
-            background: none;
-            position: relative;
-        }
-        
-        .progress::after {
-            content: "";
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 6px solid #eee;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        
-        .progress>span {
-            width: 50%;
-            height: 100%;
-            overflow: hidden;
-            position: absolute;
-            top: 0;
-            z-index: 1;
-        }
-        
-        .progress .progress-left {
-            left: 0;
-        }
-        
-        .progress .progress-bar {
-            width: 100%;
-            height: 100%;
-            background: none;
-            border-width: 6px;
-            border-style: solid;
-            position: absolute;
-            top: 0;
-        }
-        
-        .progress .progress-left .progress-bar {
-            left: 100%;
-            border-top-right-radius: 80px;
-            border-bottom-right-radius: 80px;
-            border-left: 0;
-            -webkit-transform-origin: center left;
-            transform-origin: center left;
-        }
-        
-        .progress .progress-right {
-            right: 0;
-        }
-        
-        .progress .progress-right .progress-bar {
-            left: -100%;
-            border-top-left-radius: 80px;
-            border-bottom-left-radius: 80px;
-            border-right: 0;
-            -webkit-transform-origin: center right;
-            transform-origin: center right;
-        }
-        
-        .progress .progress-value {
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        /*
+    .progress {
+        width: 150px;
+        height: 150px;
+        background: none;
+        position: relative;
+    }
+
+    .progress::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 6px solid #eee;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .progress>span {
+        width: 50%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+    }
+
+    .progress .progress-left {
+        left: 0;
+    }
+
+    .progress .progress-bar {
+        width: 100%;
+        height: 100%;
+        background: none;
+        border-width: 6px;
+        border-style: solid;
+        position: absolute;
+        top: 0;
+    }
+
+    .progress .progress-left .progress-bar {
+        left: 100%;
+        border-top-right-radius: 80px;
+        border-bottom-right-radius: 80px;
+        border-left: 0;
+        -webkit-transform-origin: center left;
+        transform-origin: center left;
+    }
+
+    .progress .progress-right {
+        right: 0;
+    }
+
+    .progress .progress-right .progress-bar {
+        left: -100%;
+        border-top-left-radius: 80px;
+        border-bottom-left-radius: 80px;
+        border-right: 0;
+        -webkit-transform-origin: center right;
+        transform-origin: center right;
+    }
+
+    .progress .progress-value {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    /*
 *
 * ==========================================
 * FOR DEMO PURPOSE
 * ==========================================
 *
 */
-        
-        body {
-            min-height: 100vh;
-        }
-        
-        .rounded-lg {
-            border-radius: 1rem;
-        }
-        
-        .text-gray {
-            color: #aaa;
-        }
-        
-        div.h4 {
-            line-height: 1rem;
-        }
-    </style>
+
+    body {
+        min-height: 100vh;
+    }
+
+    .rounded-lg {
+        border-radius: 1rem;
+    }
+
+    .text-gray {
+        color: #aaa;
+    }
+
+    div.h4 {
+        line-height: 1rem;
+    }
+</style>
 {% endblock css %}
 {% block body %}
-<h1 class="text-center bg-warning my-0">Edit Room</h1>
-    <!--Staff section -->
-    <div class="container">
-
+<div class="container mt-3">
+    <div class="container rounded shadow-sm">
+        <h1 class="text-center my-0">Edit Room</h1>
+        <!--Staff section -->
         <div class="row">
             <div class="col-md-6 col-lg-6 col-xlg-6 col-sm-12 mx-auto">
 
@@ -108,23 +109,25 @@
                     {%csrf_token%}
                     <div class="form-group">
                         <label for="pwd">Room Number:</label>
-                        <input type="number" class="form-control" id="roomnumber" name="roomnumber" value="{{room.roomnumber}}" disabled>
+                        <input type="number" class="form-control" id="roomnumber" name="roomnumber"
+                            value="{{room.roomnumber}}" disabled>
                     </div>
                     <div class="form-group">
                         <label for="email">Room Type:</label>
                         <select class="form-control" name="roomtype" id="roomtype">
-                            
-                            
-                            
-                            <option  value=1>Premium</option>
-                            <option  value=2>Deluxe</option>
-                            <option  value=3>Basic</option>
+
+
+
+                            <option value=1>Premium</option>
+                            <option value=2>Deluxe</option>
+                            <option value=3>Basic</option>
 
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="pwd">Capacity:</label>
-                        <input type="number" class="form-control " id="capacity" name="capacity" value="{{room.capacity}}">
+                        <input type="number" class="form-control " id="capacity" name="capacity"
+                            value="{{room.capacity}}">
                     </div>
                     <div class="form-group">
                         <label for="pwd">Price:</label>
@@ -139,27 +142,33 @@
                         <select class="form-control" name="status" id="status">
                             <option value="1">Available</option>
                             <option value="2">Not Available</option>
-                            
+
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="pwd">Location:</label>
-                        <input type="text" class="form-control " id="hotel" name="hotel" value="{{room.hotel.location}}" disabled>
+                        <input type="text" class="form-control " id="hotel" name="hotel" value="{{room.hotel.location}}"
+                            disabled>
                     </div>
-                    <button type="submit" class="btn btn-danger">Save</button>
+                    <div class=" w-100 text-center mt-3">
+                        <button type="submit" class="btn btn-success mb-3">Save</button>
+                    </div>
+
                     <input type="hidden" name="roomid" value="{{room.id}}">
                     <input type="hidden" name="roomtypevalue" id="roomtypevalue" value="{{room.room_type}}">
                     <input type="hidden" name="roomstatus" id="roomstatus" value="{{room.status}}">
                     <input type="hidden" class="form-control " id="hotel" name="hotel" value="{{room.hotel.id}}">
-                    <input type="hidden" class="form-control" id="roomnumber" name="roomnumber" value="{{room.roomnumber}}">
+                    <input type="hidden" class="form-control" id="roomnumber" name="roomnumber"
+                        value="{{room.roomnumber}}">
                 </form>
             </div>
         </div>
     </div>
+</div>
 {% endblock body %}
-    {% block js %}
-    <script>
-    $(document).ready(function() {
+{% block js %}
+<script>
+    $(document).ready(function () {
 
         //for  room type
         var x = $("#roomtypevalue").val()
@@ -171,12 +180,4 @@
 
     });
 </script>
-    {% endblock js %}
-    
-
-
-
-
-
-
-   
+{% endblock js %}

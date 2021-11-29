@@ -1,6 +1,6 @@
 {% extends 'basic.html' %} {% block title %}View Room {% endblock title %} {% block body %}
 <div class="mt-5 pt-3">
-    <div class="container bg-white rounded shadow-sm mb-3 p-3">
+    <div class="container bg-white rounded shadow-sm mb-3 p-3 wow  bounceInUp">
         <h3 class="text-success text-center fw-bold mt-3"> Details</h3>
         <hr class="mb-3 border-2 border" />
         <div class="row">
@@ -22,7 +22,16 @@
                     <div class="col-7 col-md-9">{{room.hotel.state| capfirst}}</div>
                     <div class="col-5 col-md-3"><b>India: </b></div>
                     <div class="col-7 col-md-9 ">{{room.hotel.country| capfirst}}</div>
-
+                    <div class="col-7 col-md-9 pb-3">
+                        <b>Vote: </b>
+                        <div class="star-wrapper ms-5">
+                            <a href="#" class="fas fa-star s1 text-black"></a>
+                            <a href="#" class="fas fa-star s2 text-black"></a>
+                            <a href="#" class="fas fa-star s3 text-warning"></a>
+                            <a href="#" class="fas fa-star s4 text-warning"></a>
+                            <a href="#" class="fas fa-star s5 text-warning"></a>
+                        </div>
+                    </div>
                     <div class="col-7 col-md-9 mt-3">
                         <a href="/user/book-room?roomid={{room.id}}"><button
                                 class="btn btn-warning text-center py-3 w-100">Book
@@ -64,6 +73,31 @@
                     width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
+    </div>
+</div>
+<div class="container mt-3 bg-white shadow-sm rounded p-3">
+    <h3 class=" text-warning fw-bold">Comment :-</h3>
+    <div class="container pb-5" style="min-height: 30vh;">
+        <div class="row">
+            {% for each_comment in comments %}
+            <div class="col-12 mb-3">
+                <div class="card shadow-0 rounded border-primary border">
+                    <div class="card-body">
+                        <h5 class="card-title">{{each_comment.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{each_comment.created_on}}</h6>
+                        <p class="card-text">{{each_comment.body}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- {% for each_comment in comments %}
+        <tr>
+            <td>{{each_comment.name}}</td>
+            <td>{{each_comment.body}}</td>
+            <td>{{each_comment.created_on}}</td>
+        </tr>
+        {% endfor %} -->
     </div>
 </div>
 
