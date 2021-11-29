@@ -4,7 +4,7 @@
     style="background: url(https://img.thuthuatphanmem.vn/uploads/2018/10/26/anh-dep-dao-vinh-viet-nam_055419149.jpg); background-size: cover; min-height: 95vh;">
     <div class="container p-3 shadow rounded mt-5 bg-white " style="overflow: auto;">
         <h3 class="text-center text-primary fw-bold mt-3">My Bookings</h3>
-        <table class="table" style="min-height: 50vh;">
+        <table class="table" style="" id="table3_id">
             <thead>
                 <th>User</th>
                 <th>Room</th>
@@ -40,4 +40,14 @@
         </table>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#table3_id').DataTable({
+            searching: true,
+            paging: true,
+            scrollY: 400,
+            select: true
+        });
+    });
+</script>
 {% endblock body %}

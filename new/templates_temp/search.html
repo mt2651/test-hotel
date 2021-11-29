@@ -100,9 +100,9 @@
 
 
 <!--Fetched reults appear here-->
-<div class="container bg-white shadow px-0 mx-aut">
+<div class="container bg-white shadow px-0 mx-auto mb-3">
     {% if rooms %}
-    <table class="table">
+    <table class="table" id="table4_id">
         <thead class="o">
             <th>Type</th>
             <th>Location</th>
@@ -119,6 +119,12 @@
             <td>{{ r.price }}</td>
 
             <td><a href="/user/book-room?roomid={{r.id}}"><button class="btn btn-warning">Book Now</button></a></td>
+            <td><a>
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#warringLogin">
+                        Launch demo modal
+                    </button>
+                </a></td>
             <td><a href="/user/view-room?roomid={{r.id}}"><Button class="btn btn-primary">View</Button></a></td>
 
         </tr>
@@ -126,7 +132,37 @@
 
     </table>
     {% endif %}
+    <!-- Modal -->
+    <div class="modal fade" id="warringLogin" tabindex="-1" aria-labelledby="warringLoginLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="warringLoginLabel">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Đăng nhập</button>
+                    <button type="button" class="btn btn-primary">Đăng ký</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#table4_id').DataTable({
+            searching: true,
+            paging: true,
+            scrollY: 400,
+            select: true
+        });
+    });
+</script>
 <!--Fetched results ends here-->
 
 {% endblock body %}
