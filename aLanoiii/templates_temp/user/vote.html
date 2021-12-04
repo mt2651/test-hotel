@@ -1,0 +1,66 @@
+{% extends 'basic.html' %} {% block title %} {% endblock title %} {% block body %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-xlg-6 col-sm-12 mx-auto my-4 ">
+
+            <form action="/user/vote-room/vote" method="POST">
+                {%csrf_token%}
+                {%load app_tags%}
+
+                <div class="form-group hidden">
+                    <label for="person">username:</label>
+                    <input type="text" class="form-control " id="username" name="username" disabled value={{request.user}}>
+                </div>
+                <!-- <div class="form-group">
+                    <label for="person">Vote:</label>
+                    <input type="number" class="form-control " id="person" name="vote" min="1" max="5" required="true">
+                </div> -->
+                
+                <div class="form-group">
+                    <label for="username">Star:</label>
+                        <div class="form-check">
+                        <input class="form-check-input" type="radio" name="star" id="star" value="1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          1
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="star" id="star" value="2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          2
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="star" id="star" value="3">
+                        <label class="form-check-label" for="flexRadioDefault3">
+                          3
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="star" id="star" value="4">
+                        <label class="form-check-label" for="flexRadioDefault4">
+                          4
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="star" id="star" value="5" checked>
+                        <label class="form-check-label" for="flexRadioDefault5">
+                          5
+                        </label>
+                      </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username">Comment:</label>
+                    <input type="text" class="form-control " id="cmt" name="cmt">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Book Now</button>
+                <input type="hidden" name="book_id" value={{booking.id}}>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,120 @@
+{% extends 'basic.html' %}
+{% block title %}Hotel Krishna
+{% endblock title %}
+{% block body %}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-mdb-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="height: 400px;">
+            <img src="https://images5.alphacoders.com/374/374077.jpg" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item" style="height: 400px;">
+            <img src="https://images7.alphacoders.com/991/991923.jpg" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item" style="height: 400px;">
+            <img src="https://images8.alphacoders.com/747/747533.jpg" class="d-block w-100" alt="..." />
+        </div>
+        <div class="carousel-item" style="height: 400px;">
+            <img src="https://images.alphacoders.com/771/771820.jpg" class="d-block w-100" alt="..." />
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators"
+        data-mdb-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleIndicators"
+        data-mdb-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<div class="" style="transform: translateY(-50%);">
+    <div class="p-3 mx-auto  text-center fw-bolder bg-white rounded shadow-sm text-primary bg-white w-75">
+        <!--Booking Section starts here-->
+        <section>
+            <div class="container">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row justify-content-center ">
+                        <div class="col-lg-4">
+                            <label for="">Location</label>
+                            <select class="form-control" name="search_location" id="roomstatus">
+                                <!--Hotel id and location-->
+                                <option>Location</option>
+                                {% for each_location,each_hotel_id in all_location %}
+
+                                <option value={{each_hotel_id}}>{{each_location}}</option>
+                                {% endfor %}
+
+
+
+                            </select>
+                        </div>
+                        {%load app_tags%}
+                        <div class="col-lg-2">
+                            <label for="">Check in</label>
+                            <input class="form-control mr-sm-2" type="date" placeholder="Check in" name="cin"
+                                min={%todays_date%} max={% max_date %} aria-label="Search" required="True">
+                        </div>
+                        <div class="col-lg-2">
+                            <label for="">Check Out</label>
+                            <input class="form-control mr-sm-2" type="date" placeholder="Check out" name="cout"
+                                min={%tommorow%} max={% max_date%} aria-label="Search" required="True">
+                        </div>
+                        <div class="col-lg-2">
+                            <label for="">Person</label>
+                            <input class="form-control mr-sm-2" type="number" placeholder="Person" name="capacity"
+                                aria-label="Search" required="True">
+                        </div>
+                        <div class="col-lg-2">
+
+                            <input type="submit" value="Check Availabilty"
+                                class="form-control mr-sm-2 btn btn-primary my-4" style="position: relative;">
+                        </div>
+                        {% if rooms %}
+                        <p class="text-center text-success">Rooms Available</p>
+                        {% endif %}
+
+                    </div>
+                </form>
+
+            </div>
+        </section>
+        <!--Booking Section ends here-->
+    </div>
+
+</div>
+
+
+<!--Fetched reults appear here-->
+<div class="container bg-white shadow px-0 mx-aut">
+    {% if rooms %}
+    <table class="table">
+        <thead class="o">
+            <th>Type</th>
+            <th>Location</th>
+            <th>Person</th>
+            <th>price</th>
+            <th>Action</th>
+            <th>Views</th>
+        </thead>
+        {% for r in rooms %}
+        <tr class="">
+            <td>{{ r.get_room_type_display }}</td>
+            <td>{{ r.hotel.location }}</td>
+            <td>{{ r.capacity }}</td>
+            <td>{{ r.price }}</td>
+
+            <td><a href="/user/book-room?roomid={{r.id}}"><button class="btn btn-warning">Book Now</button></a></td>
+            <td><a href="/user/view-room?roomid={{r.id}}"><Button class="btn btn-primary">View</Button></a></td>
+             
+        </tr>
+        {% endfor %}
+
+    </table>
+    {% endif %}
+</div>
+<!--Fetched results ends here-->
+
+{% endblock body %}
